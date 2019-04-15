@@ -1,18 +1,5 @@
 ﻿if ('serviceWorker' in navigator) {
 
-    // Test to see if we are already connected
-    //ws = new WebSocket('ws://localhost:8080');
-    //ws.onopen = function (e) {
-    //    setTimeout(function () {
-    //        if (ws.readyState === ws.CLOSED) {
-    //            // we already have a connection
-    //        } else {
-    //            ws.close();
-    //            // Kill our service workers and Restart
-    //            KillAndRestart();
-    //        }
-    //    }, 1000);
-    //}
     KillAndRestart();
 
     function KillAndRestart() {
